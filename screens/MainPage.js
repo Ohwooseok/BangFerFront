@@ -1,147 +1,137 @@
 import { StatusBar } from "expo-status-bar";
-import Back1 from "../assets/Back1.png";
-import Button1 from "../assets/Button1.png";
-import Button2 from "../assets/Button2.png";
-import Button3 from "../assets/Button3.png";
-import Button4 from "../assets/Button4.png";
+import BackGround from "../assets/Back1.png";
+import TatcticsButtonImage from "../assets/Button1.png";
+import BangusukTeamButtonImage from "../assets/Button2.png";
+import FreeBoardButtonImage from "../assets/Button3.png";
+import MypageButtonImage from "../assets/Button4.png";
 import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import styled from "styled-components";
 
-import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+
+const Container = styled.View`
+  flex: 1;
+  flex-direction: column;
+`;
+
+const BackGroundView = styled.View`
+  ${StyleSheet.absoluteFillObject};
+  z-index: -1;
+`;
+
+const FirstView = styled.View`
+  flex: 1;
+`;
+
+const SecondView = styled.View`
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ThirdView = styled.View`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+const FourthView = styled.View`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const ForButtonInThirdView = styled.View`
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const TitleText = styled.Text`
+  font-size: 45px;
+  font-weight: 600;
+  color: black;
+  text-decoration-line: underline;
+`;
+
+const BackGroundImage = styled.Image`
+  width: 100%;
+  height: 100%;
+`;
+
+const TacticsAndBangusukTeamButton = styled.TouchableOpacity`
+  padding-vertical: 15px;
+  padding-horizontal: 15px;
+  border-radius: 10px;
+  width: 120px;
+  height: 120px;
+  margin: -5px;
+`;
+
+const FreeBoardAndMyPageButton = styled.TouchableOpacity`
+  padding-vertical: 15px;
+  padding-horizontal: 15px;
+  border-radius: 10px;
+  width: 120px;
+  height: 120px;
+  margin: -5px;
+`;
+
+const ButtonsImage = styled.Image`
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+`;
 
 const MainPage = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <Container>
       <StatusBar style="auto" />
-      <View style={styles.BackGround}>
-        <Image
-          source={Back1}
-          resizeMode={"stretch"}
-          style={styles.ImageStyle}
-        />
-      </View>
-      <View style={styles.first}></View>
-      <View style={styles.second}>
-        <Text style={styles.Maintext}>BANGUSUK</Text>
-        <Text style={styles.Maintext}>FERGUSON</Text>
-      </View>
-      <View style={styles.third}>
-        <View style={styles.thirdRow}>
-          <TouchableOpacity
-            style={styles.firstButton}
+      <BackGroundView>
+        <BackGroundImage source={BackGround} resizeMode={"stretch"} />
+      </BackGroundView>
+      <FirstView></FirstView>
+      <SecondView>
+        <TitleText>BANGUSUK</TitleText>
+        <TitleText>FERGUSON</TitleText>
+      </SecondView>
+      <ThirdView>
+        <ForButtonInThirdView>
+          <TacticsAndBangusukTeamButton
             onPress={() => navigation.navigate("Tactics")}
           >
-            <Image
-              source={Button1}
-              resizeMode={"contain"}
-              style={styles.ButtonImage}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.firstButton}
+            <ButtonsImage source={TatcticsButtonImage} resizeMode={"contain"} />
+          </TacticsAndBangusukTeamButton>
+          <TacticsAndBangusukTeamButton
             onPress={() => navigation.navigate("BangusukTeam")}
           >
-            <Image
-              source={Button2}
+            <ButtonsImage
+              source={BangusukTeamButtonImage}
               resizeMode={"contain"}
-              style={styles.ButtonImage}
             />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.thirdRow}>
-          <TouchableOpacity
-            style={styles.secondButton}
+          </TacticsAndBangusukTeamButton>
+        </ForButtonInThirdView>
+        <ForButtonInThirdView>
+          <FreeBoardAndMyPageButton
             onPress={() => navigation.navigate("FreeBoard")}
           >
-            <Image
-              source={Button3}
+            <ButtonsImage
+              source={FreeBoardButtonImage}
               resizeMode={"contain"}
-              style={styles.ButtonImage}
             />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.secondButton}
+          </FreeBoardAndMyPageButton>
+          <FreeBoardAndMyPageButton
             onPress={() => navigation.navigate("MyPage")}
           >
-            <Image
-              source={Button4}
-              resizeMode={"contain"}
-              style={styles.ButtonImage}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      <View style={styles.four}></View>
-    </View>
+            <ButtonsImage source={MypageButtonImage} resizeMode={"contain"} />
+          </FreeBoardAndMyPageButton>
+        </ForButtonInThirdView>
+      </ThirdView>
+      <FourthView></FourthView>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-  },
-  first: {
-    flex: 1,
-  },
-  second: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  Maintext: {
-    fontSize: 45,
-    fontWeight: "600",
-    color: "black",
-    textDecorationLine: "underline",
-  },
-  third: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  thirdRow: {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  four: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  ImageStyle: {
-    width: "100%",
-    height: "100%",
-  },
-  BackGround: {
-    ...StyleSheet.absoluteFillObject,
-    zIndex: -1,
-  },
-  firstButton: {
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    borderRadius: 10,
-    width: 120,
-    height: 120,
-    margin: -5,
-  },
-  secondButton: {
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    borderRadius: 10,
-    width: 120,
-    height: 120,
-    margin: -5,
-  },
-  ButtonImage: {
-    width: "100%",
-    height: "100%",
-    zIndex: 1,
-  },
-});
 
 export default MainPage;
